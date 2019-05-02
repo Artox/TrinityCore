@@ -31,6 +31,11 @@
 #include <mysql.h>
 #include <mysqld_error.h>
 
+/** As of MariaDB 10.2, CR_INVALID_CONN_HANDLE was dropped in favour of CR_CONN_UNKNOWN_PROTOCOL */
+#ifdef CR_CONN_UNKNOWN_PROTOCOL
+#define CR_INVALID_CONN_HANDLE CR_CONN_UNKNOWN_PROTOCOL
+#endif
+
 MySQLConnectionInfo::MySQLConnectionInfo(std::string const& infoString)
 {
     Tokenizer tokens(infoString, ';');

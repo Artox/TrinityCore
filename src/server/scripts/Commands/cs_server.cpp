@@ -49,6 +49,11 @@ EndScriptData */
 #include <openssl/crypto.h>
 #include <openssl/opensslv.h>
 
+/** MariaDB is compatible, but does not declare MYSQL_SERVER_VERSION since 10.2 */
+#ifdef MARIADB_CLIENT_VERSION_STR
+#define MYSQL_SERVER_VERSION MARIADB_CLIENT_VERSION_STR
+#endif
+
 class server_commandscript : public CommandScript
 {
 public:
