@@ -16,11 +16,7 @@ if(PLATFORM EQUAL 32)
       -msse2
       -mfpmath=sse)
 endif()
-target_compile_definitions(trinity-compile-option-interface
-  INTERFACE
-    -DHAVE_SSE2
-    -D__SSE2__)
-message(STATUS "GCC: SFMT enabled, SSE2 flags forced")
+message(STATUS "GCC: SSE2 flags forced")
 
 if( WITH_WARNINGS )
   target_compile_options(trinity-warning-interface
